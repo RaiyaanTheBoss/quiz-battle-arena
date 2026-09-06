@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-register',
+  imports: [FormsModule],
+  templateUrl: './register.html',
+  styleUrl: './register.css'
+})
+export class Register {
+
+  username = '';
+  email = '';
+  password = '';
+
+  register() {
+    console.log('Username:', this.username);
+    console.log('Email:', this.email);
+  }
+
+}

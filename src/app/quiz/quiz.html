@@ -1,0 +1,290 @@
+<div class="quiz-container">
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="quiz-header">
+    <h1>⚔️ Quiz Battle Arena</h1>
+    <p>Test your knowledge. Beat your opponent!</p>
+  </header>
+
+
+  <!-- ================================================= -->
+  <!-- CATEGORY SELECTION SCREEN -->
+  <!-- ================================================= -->
+  <div
+    class="category-screen"
+    *ngIf="!selectedCategory">
+
+    <h2>Choose Your Category</h2>
+
+    <p>Select a category for your battle.</p>
+
+    <div class="categories">
+
+      <button
+        type="button"
+        *ngFor="let category of categories"
+        (click)="selectCategory(category)">
+
+        <span class="category-icon">
+          {{ category.split(' ')[0] }}
+        </span>
+
+        <span>
+          {{ category.substring(category.indexOf(' ') + 1) }}
+        </span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================================================= -->
+  <!-- BATTLE READY SCREEN -->
+  <!-- ================================================= -->
+  <div
+    class="battle-ready"
+    *ngIf="selectedCategory && !quizStarted && !quizFinished">
+
+    <!-- Selected Category -->
+    <div class="selected-category-large">
+      <span>Selected Category</span>
+
+      <strong>
+        {{ selectedCategory }}
+      </strong>
+    </div>
+
+
+    <!-- Ready Icon -->
+    <div class="ready-icon">
+      ⚔️
+    </div>
+
+
+    <h2>Ready for battle?</h2>
+
+    <p>
+      Answer the questions before time runs out.
+    </p>
+
+
+    <!-- PLAYERS -->
+    <div class="players">
+
+      <!-- Player -->
+      <div class="player">
+
+        <span class="avatar">
+          🧑‍💻
+        </span>
+
+        <div>
+          <strong>Player 1</strong>
+          <p>Ready!</p>
+        </div>
+
+      </div>
+
+
+      <!-- VS -->
+      <div class="vs">
+        VS
+      </div>
+
+
+      <!-- Opponent -->
+      <div class="player">
+
+        <span class="avatar">
+          🤖
+        </span>
+
+        <div>
+          <strong>Opponent</strong>
+          <p>Ready!</p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- START BATTLE -->
+    <div class="start-battle-section">
+
+      <button
+        type="button"
+        class="start-battle"
+        (click)="startQuiz()">
+
+        ⚔️ START BATTLE
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================================================= -->
+  <!-- QUIZ SCREEN -->
+  <!-- ================================================= -->
+  <main
+    class="question-card"
+    *ngIf="quizStarted && !quizFinished">
+
+
+    <!-- Selected Category -->
+    <div class="selected-category">
+      {{ selectedCategory }}
+    </div>
+
+
+    <!-- Question Information -->
+    <div class="question-info">
+
+      <span>
+        Question {{ currentQuestion + 1 }} of {{ questions.length }}
+      </span>
+
+      <span
+        [class.timer-warning]="timeLeft() <= 10">
+
+        ⏱️ {{ timeLeft() }}s
+
+      </span>
+
+    </div>
+
+
+    <!-- Progress Bar -->
+    <div
+      class="progress-bar"
+      role="progressbar"
+      [attr.aria-valuenow]="currentQuestion + 1"
+      aria-valuemin="1"
+      [attr.aria-valuemax]="questions.length">
+
+      <div
+        class="progress-fill"
+        [style.width.%]="
+          ((currentQuestion + 1) / questions.length) * 100
+        ">
+      </div>
+
+    </div>
+
+
+    <!-- Question -->
+    <h2>
+      {{ questions[currentQuestion].question }}
+    </h2>
+
+
+    <!-- Answer Options -->
+    <div class="options">
+
+      <button
+        type="button"
+        *ngFor="let option of questions[currentQuestion].options"
+        (click)="selectAnswer(option)">
+
+        {{ option }}
+
+      </button>
+
+    </div>
+
+  </main>
+
+
+  <!-- ================================================= -->
+  <!-- RESULT SCREEN -->
+  <!-- ================================================= -->
+  <main
+    class="question-card"
+    *ngIf="quizFinished">
+
+    <div class="result-screen">
+
+
+      <!-- Result Icon -->
+      <div class="trophy">
+
+        {{ timeUp ? '⏰' : '🏆' }}
+
+      </div>
+
+
+      <!-- Result Title -->
+      <h2>
+
+        {{ timeUp
+          ? "Time's Up!"
+          : "Battle Complete!" }}
+
+      </h2>
+
+
+      <!-- Result Message -->
+      <p class="result-message">
+
+        {{ timeUp
+          ? "The battle timer has ended."
+          : "Great job! Here's your final result." }}
+
+      </p>
+
+
+      <!-- Final Score -->
+      <div class="final-score">
+
+        <span>
+          Your Score
+        </span>
+
+        <strong>
+          {{ score }} / {{ questions.length }}
+        </strong>
+
+      </div>
+
+
+      <!-- Accuracy -->
+      <p class="accuracy">
+
+        Accuracy:
+        {{ (score / questions.length * 100).toFixed(0) }}%
+
+      </p>
+
+
+      <!-- Play Again -->
+      <button
+        type="button"
+        class="play-again"
+        (click)="restartQuiz()">
+
+        🔄 Play Again
+
+      </button>
+
+
+      <!-- Choose Another Category -->
+      <button
+        type="button"
+        class="change-category"
+        (click)="selectedCategory = ''; quizFinished = false">
+
+        🎯 Choose Another Category
+
+      </button>
+
+    </div>
+
+  </main>
+
+</div>
+
