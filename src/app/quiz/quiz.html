@@ -7,9 +7,7 @@
   </header>
 
 
-  <!-- ================================================= -->
-  <!-- CATEGORY SELECTION SCREEN -->
-  <!-- ================================================= -->
+  <!-- ==================== CATEGORY SELECTION ==================== -->
   <div
     class="category-screen"
     *ngIf="!selectedCategory">
@@ -40,14 +38,11 @@
   </div>
 
 
-  <!-- ================================================= -->
-  <!-- BATTLE READY SCREEN -->
-  <!-- ================================================= -->
+  <!-- ==================== BATTLE READY ==================== -->
   <div
     class="battle-ready"
     *ngIf="selectedCategory && !quizStarted && !quizFinished">
 
-    <!-- Selected Category -->
     <div class="selected-category-large">
       <span>Selected Category</span>
 
@@ -57,7 +52,6 @@
     </div>
 
 
-    <!-- Ready Icon -->
     <div class="ready-icon">
       ⚔️
     </div>
@@ -73,7 +67,6 @@
     <!-- PLAYERS -->
     <div class="players">
 
-      <!-- Player -->
       <div class="player">
 
         <span class="avatar">
@@ -88,13 +81,11 @@
       </div>
 
 
-      <!-- VS -->
       <div class="vs">
         VS
       </div>
 
 
-      <!-- Opponent -->
       <div class="player">
 
         <span class="avatar">
@@ -128,21 +119,18 @@
   </div>
 
 
-  <!-- ================================================= -->
-  <!-- QUIZ SCREEN -->
-  <!-- ================================================= -->
+  <!-- ==================== QUIZ SCREEN ==================== -->
   <main
     class="question-card"
     *ngIf="quizStarted && !quizFinished">
 
-
-    <!-- Selected Category -->
+    <!-- CATEGORY -->
     <div class="selected-category">
       {{ selectedCategory }}
     </div>
 
 
-    <!-- Question Information -->
+    <!-- QUESTION INFORMATION -->
     <div class="question-info">
 
       <span>
@@ -159,7 +147,7 @@
     </div>
 
 
-    <!-- Progress Bar -->
+    <!-- PROGRESS -->
     <div
       class="progress-bar"
       role="progressbar"
@@ -177,13 +165,13 @@
     </div>
 
 
-    <!-- Question -->
+    <!-- QUESTION -->
     <h2>
       {{ questions[currentQuestion].question }}
     </h2>
 
 
-    <!-- Answer Options -->
+    <!-- ANSWERS -->
     <div class="options">
 
       <button
@@ -200,45 +188,33 @@
   </main>
 
 
-  <!-- ================================================= -->
-  <!-- RESULT SCREEN -->
-  <!-- ================================================= -->
+  <!-- ==================== RESULT SCREEN ==================== -->
   <main
     class="question-card"
     *ngIf="quizFinished">
 
     <div class="result-screen">
 
-
-      <!-- Result Icon -->
       <div class="trophy">
-
         {{ timeUp ? '⏰' : '🏆' }}
-
       </div>
 
 
-      <!-- Result Title -->
       <h2>
-
         {{ timeUp
           ? "Time's Up!"
           : "Battle Complete!" }}
-
       </h2>
 
 
-      <!-- Result Message -->
       <p class="result-message">
-
         {{ timeUp
           ? "The battle timer has ended."
           : "Great job! Here's your final result." }}
-
       </p>
 
 
-      <!-- Final Score -->
+      <!-- SCORE -->
       <div class="final-score">
 
         <span>
@@ -252,16 +228,14 @@
       </div>
 
 
-      <!-- Accuracy -->
+      <!-- ACCURACY -->
       <p class="accuracy">
-
         Accuracy:
         {{ (score / questions.length * 100).toFixed(0) }}%
-
       </p>
 
 
-      <!-- Play Again -->
+      <!-- PLAY AGAIN -->
       <button
         type="button"
         class="play-again"
@@ -272,7 +246,7 @@
       </button>
 
 
-      <!-- Choose Another Category -->
+      <!-- CHANGE CATEGORY -->
       <button
         type="button"
         class="change-category"
@@ -287,4 +261,3 @@
   </main>
 
 </div>
-

@@ -1,460 +1,88 @@
-/* ==================== MAIN CONTAINER ==================== */
+/* =========================================================
+   QUIZ BATTLE ARENA — GLOBAL PROFESSIONAL UI
+   ========================================================= */
+
+
+/* ==================== HTML & BODY ==================== */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  background: #0f172a;
+}
+
+
+/* ==================== BODY ==================== */
+
+body {
+  min-height: 100vh;
+  background: #0f172a;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+
+/* ==================== ANGULAR ROOT ==================== */
+
+app-root {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #0f172a;
+}
+
+
+/* ==================== GLOBAL BOX SIZING ==================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ==================== REMOVE DEFAULT MARGINS ==================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+
+/* ==================== BUTTON DEFAULT ==================== */
+
+button {
+  font-family: inherit;
+}
+
+
+/* ==================== MAIN QUIZ BACKGROUND ==================== */
 
 .quiz-container {
+  width: 100%;
+  min-width: 100%;
   min-height: 100vh;
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #141e30, #243b55);
-  color: white;
-  font-family: Arial, sans-serif;
-}
+  margin: 0;
+  padding: 40px 20px 60px;
 
+  background: #0f172a;
+  color: #ffffff;
 
-/* ==================== HEADER ==================== */
+  font-family: Arial, Helvetica, sans-serif;
 
-.quiz-header {
-  text-align: center;
-  margin-bottom: 35px;
-}
+  box-sizing: border-box;
 
-.quiz-header h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
-}
-
-.quiz-header p {
-  color: #cbd5e1;
-  font-size: 17px;
-}
-
-
-/* ==================== PLAYERS ==================== */
-
-.players {
-  max-width: 900px;
-  margin: 0 auto 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.player {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 18px 25px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  min-width: 200px;
-  backdrop-filter: blur(10px);
-}
-
-.avatar {
-  font-size: 35px;
-}
-
-.player p {
-  margin: 5px 0 0;
-  color: #cbd5e1;
-}
-
-.vs {
-  font-size: 28px;
-  font-weight: bold;
-  color: #facc15;
-}
-
-
-/* ==================== CATEGORY SCREEN ==================== */
-
-.category-screen {
-  max-width: 900px;
-  margin: 0 auto 30px;
-  padding: 35px;
-  background: white;
-  color: #172033;
-  border-radius: 22px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-}
-
-.category-screen h2 {
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-.category-screen p {
-  color: #64748b;
-  font-size: 17px;
-  margin-bottom: 30px;
-}
-
-.categories {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-
-.categories button {
-  padding: 20px;
-  border: 2px solid #e2e8f0;
-  border-radius: 14px;
-  background: white;
-  color: #172033;
-  font-size: 17px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.categories button:hover {
-  background: #eef2ff;
-  border-color: #6366f1;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
-}
-
-
-/* ==================== BATTLE READY SCREEN ==================== */
-
-.battle-ready {
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 20px 20px 40px;
-}
-
-.selected-category-large {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  padding: 10px 18px;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  font-size: 15px;
-}
-
-.selected-category-large span {
-  color: #cbd5e1;
-}
-
-.selected-category-large strong {
-  color: #facc15;
-}
-
-.ready-icon {
-  font-size: 55px;
-  margin: 10px 0;
-}
-
-.battle-ready h2 {
-  font-size: 34px;
-  margin: 10px 0;
-}
-
-.battle-ready > p {
-  color: #cbd5e1;
-  font-size: 17px;
-  margin-bottom: 35px;
-}
-
-
-/* ==================== READY SCREEN PLAYERS ==================== */
-
-.battle-ready .players {
-  margin-bottom: 35px;
-}
-
-
-/* ==================== START BATTLE ==================== */
-
-.start-battle-section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.start-battle {
-  padding: 16px 42px;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
-  transition: all 0.2s ease;
-}
-
-.start-battle:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.5);
-}
-
-.start-battle:active {
-  transform: translateY(0);
-}
-
-
-/* ==================== QUIZ CARD ==================== */
-
-.question-card {
-  max-width: 900px;
-  margin: auto;
-  padding: 35px;
-  background: white;
-  color: #172033;
-  border-radius: 22px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-}
-
-
-/* ==================== SELECTED CATEGORY ==================== */
-
-.selected-category {
-  display: inline-block;
-  padding: 7px 14px;
-  margin-bottom: 15px;
-  border-radius: 20px;
-  background: #eef2ff;
-  color: #6366f1;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-
-/* ==================== QUESTION INFORMATION ==================== */
-
-.question-info {
-  display: flex;
-  justify-content: space-between;
-  color: #64748b;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-
-/* ==================== TIMER ==================== */
-
-.timer-warning {
-  color: #ef4444;
-  font-weight: bold;
-}
-
-
-/* ==================== PROGRESS BAR ==================== */
-
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background: #e2e8f0;
-  border-radius: 20px;
-  overflow: hidden;
-  margin-bottom: 30px;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6);
-  border-radius: 20px;
-  transition: width 0.4s ease;
-}
-
-
-/* ==================== QUESTION ==================== */
-
-.question-card h2 {
-  font-size: 25px;
-  margin-bottom: 30px;
-  line-height: 1.4;
-}
-
-
-/* ==================== ANSWER OPTIONS ==================== */
-
-.options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
-
-.options button {
-  padding: 18px;
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
-  background: white;
-  color: #172033;
-  font-size: 17px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.options button:hover {
-  background: #eef2ff;
-  border-color: #6366f1;
-  transform: translateY(-2px);
-}
-
-
-/* ==================== RESULT SCREEN ==================== */
-
-.result-screen {
-  text-align: center;
-  padding: 20px 0;
-}
-
-.trophy {
-  font-size: 70px;
-  margin-bottom: 15px;
-}
-
-.result-screen h2 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.result-message {
-  color: #64748b;
-  font-size: 17px;
-  margin-bottom: 25px;
-}
-
-.final-score {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin: 25px 0;
-}
-
-.final-score span {
-  color: #64748b;
-  font-size: 16px;
-}
-
-.final-score strong {
-  font-size: 42px;
-  color: #6366f1;
-}
-
-.accuracy {
-  font-size: 18px;
-  font-weight: 600;
-  color: #334155;
-}
-
-
-/* ==================== PLAY AGAIN ==================== */
-
-.play-again {
-  margin-top: 20px;
-  padding: 14px 28px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6);
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.play-again:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
-}
-
-
-/* ==================== CHANGE CATEGORY ==================== */
-
-.change-category {
-  margin-top: 12px;
-  padding: 13px 24px;
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
-  background: white;
-  color: #475569;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.change-category:hover {
-  background: #f8fafc;
-  border-color: #6366f1;
-  color: #6366f1;
-}
-
-
-/* ==================== MOBILE ==================== */
-
-@media (max-width: 650px) {
-
-  .quiz-container {
-    padding: 25px 15px;
-  }
-
-  .quiz-header h1 {
-    font-size: 32px;
-  }
-
-  .players {
-    flex-direction: column;
-  }
-
-  .player {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .vs {
-    margin: 5px 0;
-  }
-
-  .question-card {
-    padding: 25px;
-  }
-
-  .question-card h2 {
-    font-size: 21px;
-  }
-
-  .options {
-    grid-template-columns: 1fr;
-  }
-
-  .category-screen {
-    padding: 25px 20px;
-  }
-
-  .category-screen h2 {
-    font-size: 25px;
-  }
-
-  .categories {
-    grid-template-columns: 1fr;
-  }
-
-  .categories button {
-    padding: 18px;
-  }
-
-  .battle-ready {
-    padding: 10px 5px 30px;
-  }
-
-  .battle-ready h2 {
-    font-size: 28px;
-  }
-
-  .start-battle {
-    width: 100%;
-    max-width: 350px;
-  }
+  overflow-x: hidden;
 }
