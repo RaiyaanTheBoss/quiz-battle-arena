@@ -14,6 +14,14 @@ export class ApiService {
     return this.http.get<{ message: string }>(this.apiUrl);
   }
 
+  register(user: {
+    username: string;
+    email: string;
+    password: string;
+  }) {
+    return this.http.post(`${this.apiUrl}/api/auth/register`, user);
+  }
+
   saveResult(result: {
     category: string;
     score: number;
