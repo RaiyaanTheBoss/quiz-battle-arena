@@ -1,7 +1,7 @@
 /* =========================================================
-   QUIZ BATTLE ARENA — GLOBAL PROFESSIONAL UI
+   QUIZ BATTLE ARENA
+   GLOBAL STYLES
    ========================================================= */
-
 
 /* ==================== HTML & BODY ==================== */
 
@@ -10,34 +10,29 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-width: 100%;
   min-height: 100%;
   background: #0f172a;
 }
-
 
 /* ==================== BODY ==================== */
 
 body {
   min-height: 100vh;
-  background: #0f172a;
   font-family: Arial, Helvetica, sans-serif;
+  background: #0f172a;
   overflow-x: hidden;
 }
-
 
 /* ==================== ANGULAR ROOT ==================== */
 
 app-root {
   display: block;
   width: 100%;
-  min-width: 100%;
   min-height: 100vh;
   margin: 0;
   padding: 0;
   background: #0f172a;
 }
-
 
 /* ==================== GLOBAL BOX SIZING ==================== */
 
@@ -46,7 +41,6 @@ app-root {
 *::after {
   box-sizing: border-box;
 }
-
 
 /* ==================== REMOVE DEFAULT MARGINS ==================== */
 
@@ -60,29 +54,14 @@ p {
   margin-top: 0;
 }
 
-
 /* ==================== BUTTON DEFAULT ==================== */
 
 button {
   font-family: inherit;
 }
 
-
-/* ==================== MAIN QUIZ BACKGROUND ==================== */
-
-.quiz-container {
+.page-content {
   width: 100%;
-  min-width: 100%;
-  min-height: 100vh;
   margin: 0;
-  padding: 40px 20px 60px;
-
-  background: #0f172a;
-  color: #ffffff;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  box-sizing: border-box;
-
-  overflow-x: hidden;
+  padding: 0;
 }

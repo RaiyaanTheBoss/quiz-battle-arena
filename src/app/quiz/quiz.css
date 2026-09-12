@@ -1,116 +1,80 @@
 /* =========================================================
-   QUIZ BATTLE ARENA — RESPONSIVE & FIXED BACKGROUND
+   QUIZ BATTLE ARENA
+   FULL SCREEN BATTLE UI
    ========================================================= */
 
-/* ==================== MAIN CONTAINER ==================== */
+/* ==================== COMPONENT ROOT ==================== */
+
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #0f172a;
+  color: #ffffff;
+}
+
+
+/* ==================== MAIN QUIZ CONTAINER ==================== */
 
 .quiz-container {
-  min-height: 100vh;
   width: 100%;
-  box-sizing: border-box;
-
-  padding: 40px 20px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 45px 30px 70px;
 
   background: #0f172a;
   color: #ffffff;
 
   font-family: Arial, Helvetica, sans-serif;
 
-  /* Keeps the background fixed while content moves */
-  background-attachment: fixed;
-
-  /* Prevents horizontal movement */
-  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 
-/* ==================== HEADER ==================== */
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .quiz-header {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto 45px;
+
   text-align: center;
-  margin: 0 auto 35px;
-  max-width: 1000px;
 }
 
 .quiz-header h1 {
-  font-size: 42px;
-  font-weight: 800;
   margin: 0 0 10px;
-  letter-spacing: -1px;
+
+  color: #ffffff;
+
+  font-size: 42px;
+  line-height: 1.2;
+  font-weight: 800;
 }
 
 .quiz-header p {
   margin: 0;
+
   color: #94a3b8;
+
   font-size: 17px;
 }
 
 
-/* ==================== PLAYERS ==================== */
-
-.players {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto 30px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 20px;
-  box-sizing: border-box;
-}
-
-.player {
-  flex: 1;
-
-  background: #1e293b;
-  border: 1px solid #334155;
-
-  padding: 18px 25px;
-  border-radius: 16px;
-
-  display: flex;
-  align-items: center;
-  gap: 15px;
-
-  min-width: 0;
-  box-sizing: border-box;
-
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.avatar {
-  font-size: 35px;
-}
-
-.player strong {
-  font-size: 17px;
-}
-
-.player p {
-  margin: 5px 0 0;
-  color: #94a3b8;
-  font-size: 14px;
-}
-
-.vs {
-  flex-shrink: 0;
-
-  font-size: 28px;
-  font-weight: 800;
-  color: #facc15;
-}
-
-
-/* ==================== CATEGORY SCREEN ==================== */
+/* =========================================================
+   CATEGORY SCREEN
+   ========================================================= */
 
 .category-screen {
-  width: 100%;
-  max-width: 900px;
+  width: min(100%, 950px);
 
-  margin: 0 auto 30px;
-  padding: 40px;
+  margin: 0 auto;
+
+  padding: 45px;
 
   background: #ffffff;
   color: #172033;
@@ -125,30 +89,42 @@
 }
 
 .category-screen h2 {
-  font-size: 30px;
-  font-weight: 800;
   margin: 0 0 10px;
+
+  color: #172033;
+
+  font-size: 32px;
+  font-weight: 800;
 }
 
 .category-screen p {
+  margin: 0 0 32px;
+
   color: #64748b;
+
   font-size: 16px;
-  margin: 0 0 30px;
 }
 
 
-/* ==================== CATEGORY GRID ==================== */
+/* =========================================================
+   CATEGORY GRID
+   ========================================================= */
 
 .categories {
+  width: 100%;
+
   display: grid;
+
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: 16px;
 }
 
 .categories button {
   width: 100%;
+  min-height: 70px;
 
-  padding: 20px;
+  padding: 18px 22px;
 
   border: 2px solid #e2e8f0;
   border-radius: 14px;
@@ -156,19 +132,26 @@
   background: #ffffff;
   color: #172033;
 
+  font-family: inherit;
+
   font-size: 16px;
   font-weight: 700;
 
   cursor: pointer;
 
-  transition: all 0.2s ease;
-
-  box-sizing: border-box;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
 }
 
 .categories button:hover {
   background: #f8f7ff;
+
   border-color: #6366f1;
+
   color: #4f46e5;
 
   transform: translateY(-3px);
@@ -177,41 +160,44 @@
 }
 
 .categories button:active {
-  transform: translateY(-1px);
+  transform: translateY(0);
 }
 
 
-/* ==================== BATTLE READY ==================== */
+/* =========================================================
+   BATTLE READY SCREEN
+   ========================================================= */
 
 .battle-ready {
-  width: 100%;
-  max-width: 1000px;
+  width: min(100%, 1050px);
 
   margin: 0 auto;
 
-  text-align: center;
+  padding: 10px 20px 50px;
 
-  padding: 20px 20px 40px;
+  text-align: center;
 
   box-sizing: border-box;
 }
 
 .selected-category-large {
   display: inline-flex;
+
   align-items: center;
+  justify-content: center;
+
   gap: 10px;
 
-  margin-bottom: 20px;
-  padding: 10px 18px;
+  margin-bottom: 25px;
 
+  padding: 10px 20px;
+
+  border: 1px solid #334155;
   border-radius: 30px;
 
   background: #1e293b;
-  border: 1px solid #334155;
 
   font-size: 15px;
-
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 .selected-category-large span {
@@ -222,60 +208,156 @@
   color: #facc15;
 }
 
+
+/* =========================================================
+   BATTLE ICON
+   ========================================================= */
+
 .ready-icon {
-  font-size: 55px;
-  margin: 10px 0;
+  margin: 5px 0 15px;
+
+  font-size: 58px;
 }
 
+
+/* =========================================================
+   BATTLE TITLE
+   ========================================================= */
+
 .battle-ready h2 {
-  font-size: 36px;
+  margin: 0 0 10px;
+
+  color: #ffffff;
+
+  font-size: 38px;
   font-weight: 800;
-  margin: 10px 0;
 }
 
 .battle-ready > p {
+  margin: 0 0 40px;
+
   color: #94a3b8;
+
   font-size: 17px;
-  margin-bottom: 35px;
 }
 
 
-/* ==================== READY SCREEN PLAYERS ==================== */
+/* =========================================================
+   PLAYERS
+   ========================================================= */
 
-.battle-ready .players {
-  margin-bottom: 35px;
-}
-
-
-/* ==================== START BATTLE ==================== */
-
-.start-battle-section {
+.players {
   width: 100%;
+  max-width: 950px;
+
+  margin: 0 auto 40px;
 
   display: flex;
-  justify-content: center;
+
   align-items: center;
 
-  margin-top: 10px;
+  gap: 20px;
+}
+
+.player {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 20px 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  background: #1e293b;
+
+  border: 1px solid #334155;
+
+  border-radius: 16px;
+
+  text-align: left;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+  box-sizing: border-box;
+}
+
+.avatar {
+  flex-shrink: 0;
+
+  font-size: 38px;
+}
+
+.player strong {
+  display: block;
+
+  color: #ffffff;
+
+  font-size: 17px;
+}
+
+.player p {
+  margin: 5px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+}
+
+.vs {
+  flex-shrink: 0;
+
+  color: #facc15;
+
+  font-size: 28px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   START BATTLE BUTTON
+   ========================================================= */
+
+.start-battle-section {
+  display: flex;
+
+  justify-content: center;
+
+  width: 100%;
+
+  margin-top: 5px;
 }
 
 .start-battle {
-  padding: 16px 45px;
+  min-width: 240px;
+
+  padding: 17px 45px;
 
   border: none;
+
   border-radius: 14px;
 
   background: #6366f1;
+
   color: #ffffff;
 
+  font-family: inherit;
+
   font-size: 18px;
+
   font-weight: 800;
 
   cursor: pointer;
 
   box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
 
-  transition: all 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .start-battle:hover {
@@ -283,7 +365,7 @@
 
   transform: translateY(-3px);
 
-  box-shadow: 0 14px 35px rgba(99, 102, 241, 0.45);
+  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.45);
 }
 
 .start-battle:active {
@@ -291,17 +373,19 @@
 }
 
 
-/* ==================== QUIZ CARD ==================== */
+/* =========================================================
+   QUESTION CARD
+   ========================================================= */
 
 .question-card {
-  width: 100%;
-  max-width: 900px;
+  width: min(100%, 950px);
 
   margin: 0 auto;
 
   padding: 40px;
 
   background: #ffffff;
+
   color: #172033;
 
   border-radius: 24px;
@@ -312,60 +396,71 @@
 }
 
 
-/* ==================== SELECTED CATEGORY ==================== */
+/* =========================================================
+   CATEGORY LABEL
+   ========================================================= */
 
 .selected-category {
   display: inline-block;
 
-  padding: 7px 14px;
   margin-bottom: 15px;
+
+  padding: 7px 14px;
 
   border-radius: 20px;
 
   background: #eef2ff;
+
   color: #4f46e5;
 
   font-size: 14px;
+
   font-weight: 800;
 }
 
 
-/* ==================== QUESTION INFORMATION ==================== */
+/* =========================================================
+   QUESTION INFO
+   ========================================================= */
 
 .question-info {
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 15px;
 
   color: #64748b;
 
-  margin-bottom: 15px;
+  font-size: 15px;
 
   font-weight: 700;
 }
 
-
-/* ==================== TIMER ==================== */
-
 .timer-warning {
   color: #ef4444;
-  font-weight: 800;
 }
 
 
-/* ==================== PROGRESS BAR ==================== */
+/* =========================================================
+   PROGRESS BAR
+   ========================================================= */
 
 .progress-bar {
   width: 100%;
   height: 10px;
 
-  background: #e2e8f0;
-
-  border-radius: 20px;
+  margin-bottom: 30px;
 
   overflow: hidden;
 
-  margin-bottom: 30px;
+  background: #e2e8f0;
+
+  border-radius: 20px;
 }
 
 .progress-fill {
@@ -379,21 +474,30 @@
 }
 
 
-/* ==================== QUESTION ==================== */
+/* =========================================================
+   QUESTION
+   ========================================================= */
 
 .question-card h2 {
-  font-size: 26px;
-  font-weight: 800;
-
   margin: 0 0 30px;
 
+  color: #172033;
+
+  font-size: 27px;
+
   line-height: 1.45;
+
+  font-weight: 800;
 }
 
 
-/* ==================== ANSWER OPTIONS ==================== */
+/* =========================================================
+   OPTIONS
+   ========================================================= */
 
 .options {
+  width: 100%;
+
   display: grid;
 
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -404,71 +508,83 @@
 .options button {
   width: 100%;
 
-  min-height: 65px;
+  min-height: 68px;
 
   padding: 18px;
 
   border: 2px solid #e2e8f0;
+
   border-radius: 14px;
 
   background: #ffffff;
+
   color: #172033;
 
-  font-size: 16px;
-  font-weight: 600;
+  font-family: inherit;
 
-  cursor: pointer;
+  font-size: 16px;
+
+  font-weight: 600;
 
   text-align: left;
 
-  transition: all 0.2s ease;
+  cursor: pointer;
 
-  box-sizing: border-box;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .options button:hover {
   background: #f8f7ff;
 
   border-color: #6366f1;
+
   color: #4f46e5;
 
   transform: translateY(-2px);
-
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
-}
-
-.options button:active {
-  transform: translateY(0);
 }
 
 
-/* ==================== RESULT SCREEN ==================== */
+/* =========================================================
+   RESULT
+   ========================================================= */
 
 .result-screen {
-  text-align: center;
   padding: 20px 0;
+
+  text-align: center;
 }
 
 .trophy {
-  font-size: 70px;
   margin-bottom: 15px;
+
+  font-size: 70px;
 }
 
 .result-screen h2 {
-  font-size: 34px;
-  font-weight: 800;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
+
+  color: #172033;
+
+  font-size: 35px;
 }
 
 .result-message {
+  margin: 0 0 25px;
+
   color: #64748b;
+
   font-size: 17px;
-  margin-bottom: 25px;
 }
 
 .final-score {
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
 
   gap: 8px;
@@ -478,24 +594,30 @@
 
 .final-score span {
   color: #64748b;
+
   font-size: 16px;
-  font-weight: 600;
 }
 
 .final-score strong {
-  font-size: 46px;
-  font-weight: 800;
   color: #4f46e5;
+
+  font-size: 46px;
 }
 
 .accuracy {
-  font-size: 18px;
-  font-weight: 700;
+  margin: 0;
+
   color: #334155;
+
+  font-size: 18px;
+
+  font-weight: 700;
 }
 
 
-/* ==================== PLAY AGAIN ==================== */
+/* =========================================================
+   RESULT BUTTONS
+   ========================================================= */
 
 .play-again {
   margin-top: 20px;
@@ -503,54 +625,72 @@
   padding: 14px 30px;
 
   border: none;
+
   border-radius: 12px;
 
   background: #6366f1;
+
   color: #ffffff;
 
   font-size: 16px;
+
   font-weight: 800;
 
   cursor: pointer;
-
-  transition: all 0.2s ease;
 }
-
-.play-again:hover {
-  background: #4f46e5;
-
-  transform: translateY(-2px);
-
-  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
-}
-
-
-/* ==================== CHANGE CATEGORY ==================== */
 
 .change-category {
-  margin-top: 12px;
+  display: block;
+
+  margin: 12px auto 0;
 
   padding: 13px 24px;
 
   border: 2px solid #e2e8f0;
+
   border-radius: 12px;
 
   background: #ffffff;
+
   color: #475569;
 
   font-size: 15px;
+
   font-weight: 700;
 
   cursor: pointer;
-
-  transition: all 0.2s ease;
 }
 
-.change-category:hover {
-  background: #f8fafc;
 
-  border-color: #6366f1;
-  color: #4f46e5;
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .quiz-container {
+    padding: 35px 20px 55px;
+  }
+
+  .quiz-header h1 {
+    font-size: 36px;
+  }
+
+  .category-screen {
+    padding: 35px 25px;
+  }
+
+  .question-card {
+    padding: 30px 25px;
+  }
+
+  .players {
+    gap: 12px;
+  }
+
+  .player {
+    padding: 17px;
+  }
 }
 
 
@@ -561,47 +701,26 @@
 @media (max-width: 650px) {
 
   .quiz-container {
-    min-height: 100vh;
-    width: 100%;
-
-    padding: 25px 15px;
-
-    box-sizing: border-box;
-
-    background: #0f172a;
-
-    background-attachment: scroll;
+    padding: 30px 15px 45px;
   }
 
   .quiz-header {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
 
   .quiz-header h1 {
-    font-size: 32px;
+    font-size: 30px;
   }
 
   .quiz-header p {
     font-size: 15px;
   }
 
-  .players {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .player {
-    width: 100%;
-    flex: none;
-  }
-
-  .vs {
-    margin: 2px 0;
-    font-size: 22px;
-  }
 
   .category-screen {
-    padding: 28px 20px;
+    padding: 28px 18px;
+
+    border-radius: 20px;
   }
 
   .category-screen h2 {
@@ -610,32 +729,66 @@
 
   .categories {
     grid-template-columns: 1fr;
+
+    gap: 12px;
   }
 
   .categories button {
-    padding: 18px;
+    min-height: 60px;
   }
 
+
   .battle-ready {
-    padding: 10px 5px 30px;
+    padding: 5px 0 35px;
   }
 
   .battle-ready h2 {
     font-size: 28px;
   }
 
-  .selected-category-large {
-    max-width: 100%;
-    box-sizing: border-box;
+  .battle-ready > p {
+    font-size: 15px;
+
+    margin-bottom: 30px;
   }
+
+  .ready-icon {
+    font-size: 48px;
+  }
+
+
+  .players {
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+  }
+
+  .player {
+    width: 100%;
+
+    flex: none;
+  }
+
+  .vs {
+    font-size: 22px;
+  }
+
 
   .start-battle {
     width: 100%;
+
     max-width: 350px;
+
+    font-size: 17px;
   }
 
+
   .question-card {
-    padding: 25px 20px;
+    padding: 25px 18px;
+
+    border-radius: 20px;
   }
 
   .question-card h2 {
@@ -648,10 +801,17 @@
 
   .options button {
     min-height: 60px;
+
+    font-size: 15px;
   }
 
+
   .question-info {
-    font-size: 14px;
+    font-size: 13px;
+  }
+
+  .result-screen h2 {
+    font-size: 29px;
   }
 
   .final-score strong {
@@ -661,13 +821,14 @@
 
 
 /* =========================================================
-   VERY SMALL SCREENS
+   VERY SMALL DEVICES
    ========================================================= */
 
 @media (max-width: 400px) {
 
   .quiz-container {
-    padding: 20px 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .quiz-header h1 {
@@ -678,12 +839,15 @@
     padding: 25px 15px;
   }
 
-  .question-card {
-    padding: 22px 15px;
+  .category-screen h2 {
+    font-size: 23px;
   }
 
-  .battle-ready {
-    padding-left: 0;
-    padding-right: 0;
+  .battle-ready h2 {
+    font-size: 25px;
+  }
+
+  .question-card {
+    padding: 22px 15px;
   }
 }

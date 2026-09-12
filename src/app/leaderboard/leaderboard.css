@@ -1,0 +1,163 @@
+.leaderboard-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  color: white;
+}
+
+.leaderboard-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.trophy {
+  display: block;
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+
+.leaderboard-header h1 {
+  margin: 0;
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.leaderboard-header p {
+  margin-top: 10px;
+  color: #a8b0c5;
+  font-size: 16px;
+}
+
+.leaderboard-card {
+  background: rgba(30, 41, 75, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 22px;
+  padding: 25px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.leaderboard-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.leaderboard-title h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.leaderboard-title span {
+  color: #c4b5fd;
+  font-size: 14px;
+}
+
+.player-row {
+  display: grid;
+  grid-template-columns: 55px 55px 1fr auto;
+  align-items: center;
+  gap: 15px;
+  padding: 17px;
+  margin-bottom: 12px;
+  border-radius: 15px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.player-row:hover {
+  transform: translateY(-2px);
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+.top-player {
+  background: rgba(124, 58, 237, 0.16);
+  border-color: rgba(139, 92, 246, 0.35);
+}
+
+.rank {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #c4b5fd;
+}
+
+.player-avatar {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.18);
+  font-size: 22px;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.player-info strong {
+  font-size: 16px;
+}
+
+.player-info span {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.player-score {
+  text-align: right;
+}
+
+.player-score strong {
+  display: block;
+  font-size: 19px;
+  color: #ddd6fe;
+}
+
+.player-score span {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .leaderboard-page {
+    padding: 35px 14px;
+  }
+
+  .leaderboard-header h1 {
+    font-size: 30px;
+  }
+
+  .leaderboard-card {
+    padding: 15px;
+  }
+
+  .player-row {
+    grid-template-columns: 35px 45px 1fr auto;
+    gap: 10px;
+    padding: 13px 10px;
+  }
+
+  .player-avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+
+  .player-info strong {
+    font-size: 14px;
+  }
+
+  .player-info span {
+    font-size: 11px;
+  }
+
+  .player-score strong {
+    font-size: 16px;
+  }
+}
