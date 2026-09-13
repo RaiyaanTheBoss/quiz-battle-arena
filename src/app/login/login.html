@@ -1,1 +1,104 @@
-<p>login works!</p>
+<div class="login-page">
+
+  <div class="login-card">
+
+    <!-- ==================== BRAND ==================== -->
+    <div class="login-brand">
+      ⚔️ Quiz Battle Arena
+    </div>
+
+
+    <!-- ==================== HEADING ==================== -->
+    <h1>Welcome Back</h1>
+
+    <p class="login-subtitle">
+      Login to continue your battle.
+    </p>
+
+
+    <!-- ==================== LOGIN FORM ==================== -->
+    <form (ngSubmit)="login()">
+
+      <!-- EMAIL -->
+      <div class="form-group">
+
+        <label for="email">
+          Email
+        </label>
+
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Enter your email"
+          autocomplete="email"
+          required
+        />
+
+      </div>
+
+
+      <!-- PASSWORD -->
+      <div class="form-group">
+
+        <label for="password">
+          Password
+        </label>
+
+        <input
+          id="password"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          required
+        />
+
+      </div>
+
+
+      <!-- ERROR MESSAGE -->
+      <p
+        class="error-message"
+        *ngIf="errorMessage"
+      >
+        {{ errorMessage }}
+      </p>
+
+
+      <!-- LOGIN BUTTON -->
+      <button
+        type="submit"
+        class="login-btn"
+        [disabled]="isLoading"
+      >
+
+        <span *ngIf="!isLoading">
+          ⚔️ Login
+        </span>
+
+        <span *ngIf="isLoading">
+          Logging in...
+        </span>
+
+      </button>
+
+    </form>
+
+
+    <!-- ==================== REGISTER ==================== -->
+    <p class="register-text">
+
+      Don't have an account?
+
+      <a routerLink="/register">
+        Create Account
+      </a>
+
+    </p>
+
+  </div>
+
+</div>

@@ -6,26 +6,51 @@
   </div>
 
   <div class="navbar-links">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
       🏠 Home
     </a>
 
-    <a routerLink="/battle" routerLinkActive="active">
+    <a
+      routerLink="/battle"
+      routerLinkActive="active">
       ⚔️ Battle
     </a>
 
-    <a routerLink="/leaderboard"
-    routerLinkActive="active">
+    <a
+      routerLink="/leaderboard"
+      routerLinkActive="active">
       🏆 Leaderboard
     </a>
 
-    <a routerLink="/history" routerLinkActive="active">
+    <a
+      routerLink="/history"
+      routerLinkActive="active">
       📜 History
     </a>
+
   </div>
 
-  <a routerLink="/register" class="login-button">
-    Login / Register
-  </a>
+  @if (isLoggedIn()) {
+
+    <button
+      type="button"
+      class="login-button logout-button"
+      (click)="logout()">
+      🚪 Logout
+    </button>
+
+  } @else {
+
+    <a
+      routerLink="/login"
+      class="login-button">
+      Login / Register
+    </a>
+
+  }
 
 </nav>

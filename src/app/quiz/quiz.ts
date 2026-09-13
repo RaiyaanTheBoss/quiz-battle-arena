@@ -554,6 +554,9 @@ export class Quiz implements OnDestroy {
     } else {
   clearInterval(this.timer);
 
+  this.quizFinished = true;
+  this.quizStarted = false;
+  
   const accuracy = Math.round((this.score / this.questions.length) * 100);
 
   this.apiService.saveResult({

@@ -1,17 +1,44 @@
 const express = require('express');
 const cors = require('cors');
+
 const connectDB = require('./config/db');
 const Result = require('./models/Result');
 const authRoutes = require('./routes/auth');
+const authMiddleware = require('./middleware/authMiddleware');
 
 const app = express();
 
+
+// ======================================================
+// DATABASE
+// ======================================================
+
 connectDB();
 
-app.use(cors());
+
+// ======================================================
+// MIDDLEWARE
+// ======================================================
+
+app.use(cors({
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
+
+// ======================================================
+// AUTH ROUTES
+// ======================================================
+
 app.use('/api/auth', authRoutes);
+
+
+// ======================================================
+// TEST ROUTE
+// ======================================================
 
 app.get('/', (req, res) => {
   res.json({
@@ -19,24 +46,120 @@ app.get('/', (req, res) => {
   });
 });
 
-// Save quiz result
-app.post('/api/results', async (req, res) => {
+
+// ======================================================
+// SAVE QUIZ RESULT
+// ======================================================
+// This route requires a valid JWT token.
+// The userId is taken from the verified token,
+// NOT from the frontend request body.
+// ======================================================
+
+app.post('/api/results', authMiddleware, async (req, res) => {
+
   try {
-    const result = await Result.create(req.body);
+
+    const {
+      category,
+      score,
+      totalQuestions,
+      accuracy
+    } = req.body;
+
+
+    // --------------------------------------------------
+    // VALIDATE QUIZ DATA
+    // --------------------------------------------------
+
+    if (
+      !category ||
+      score === undefined ||
+      totalQuestions === undefined ||
+      accuracy === undefined
+    ) {
+
+      return res.status(400).json({
+        message: 'Category, score, totalQuestions and accuracy are required'
+      });
+
+    }
+
+
+    // --------------------------------------------------
+    // CREATE RESULT
+    // --------------------------------------------------
+
+    const result = await Result.create({
+
+      // User ID comes from verified JWT
+      userId: req.user.userId,
+
+      // Quiz data comes from frontend
+      category: category,
+      score: score,
+      totalQuestions: totalQuestions,
+      accuracy: accuracy
+
+    });
+
+
+    // --------------------------------------------------
+    // SUCCESS RESPONSE
+    // --------------------------------------------------
 
     res.status(201).json({
+
       message: 'Quiz result saved successfully',
+
       result
+
     });
+
   } catch (error) {
+
+    console.error('Failed to save quiz result:', error);
+
     res.status(500).json({
+
       message: 'Failed to save quiz result'
+
+    });
+
+  }
+
+});
+
+// =========================
+// GET MY QUIZ HISTORY
+// =========================
+
+app.get('/api/results/my-results', authMiddleware, async (req, res) => {
+  try {
+    const results = await Result.find({
+      userId: req.user.userId
+    }).sort({ createdAt: -1 });
+
+    res.status(200).json(results);
+
+  } catch (error) {
+    console.error('Failed to fetch quiz history:', error);
+
+    res.status(500).json({
+      message: 'Failed to fetch quiz history'
     });
   }
 });
 
+// ======================================================
+// START SERVER
+// ======================================================
+
 const PORT = 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+
+  console.log(
+    `Server running on http://localhost:${PORT}`
+  );
+
 });
