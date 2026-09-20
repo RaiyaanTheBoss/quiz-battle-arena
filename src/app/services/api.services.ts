@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
 
-  private apiUrl = 'http://localhost:5000';
+  private apiUrl = 'https://quiz-battle-arena-backend-pcsy.onrender.com';
 
   constructor(private http: HttpClient) {}
 
