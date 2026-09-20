@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 
@@ -150,16 +152,61 @@ app.get('/api/results/my-results', authMiddleware, async (req, res) => {
   }
 });
 
+app.get('/api/results/leaderboard', async (req, res) => {
+  try {
+    const leaderboard = await Result.aggregate([
+      {
+        $group: {
+          _id: '$userId',
+          totalScore: { $sum: '$score' },
+          matches: { $sum: 1 }
+        }
+      },
+      {
+        $sort: {
+          totalScore: -1
+        }
+      },
+      {
+        $limit: 10
+      },
+      {
+        $lookup: {
+          from: 'users',
+          localField: '_id',
+          foreignField: '_id',
+          as: 'user'
+        }
+      },
+      {
+        $unwind: '$user'
+      },
+      {
+        $project: {
+          _id: 0,
+          username: '$user.username',
+          totalScore: 1,
+          matches: 1
+        }
+      }
+    ]);
+
+    res.json(leaderboard);
+
+  } catch (error) {
+    console.error('Leaderboard error:', error);
+
+    res.status(500).json({
+      message: 'Failed to load leaderboard'
+    });
+  }
+});
+
 // ======================================================
 // START SERVER
 // ======================================================
+const PORT = process.env.PORT || 5000;
 
-const PORT = 5000;
-
-app.listen(PORT, () => {
-
-  console.log(
-    `Server running on http://localhost:${PORT}`
-  );
-
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });

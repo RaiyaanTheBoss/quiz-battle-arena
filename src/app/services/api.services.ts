@@ -19,51 +19,64 @@ export class ApiService {
     email: string;
     password: string;
   }) {
-    return this.http.post(`${this.apiUrl}/api/auth/register`, user);
+    return this.http.post(
+      `${this.apiUrl}/api/auth/register`,
+      user
+    );
   }
 
-login(data: {
-  email: string;
-  password: string;
-}) {
-  return this.http.post<{
-    message: string;
-    token: string;
-    user: {
-      id: string;
-      username: string;
-      email: string;
-    };
-  }>(`${this.apiUrl}/api/auth/login`, data);
-}
+  login(data: {
+    email: string;
+    password: string;
+  }) {
+    return this.http.post<{
+      message: string;
+      token: string;
+      user: {
+        id: string;
+        username: string;
+        email: string;
+      };
+    }>(
+      `${this.apiUrl}/api/auth/login`,
+      data
+    );
+  }
+
   saveResult(result: {
-  category: string;
-  score: number;
-  totalQuestions: number;
-  accuracy: number;
-}) {
-  const token = localStorage.getItem('token');
+    category: string;
+    score: number;
+    totalQuestions: number;
+    accuracy: number;
+  }) {
+    const token = localStorage.getItem('token');
 
-  const headers = new HttpHeaders({
-    Authorization: `Bearer ${token}`
-  });
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
 
-  return this.http.post(
-    `${this.apiUrl}/api/results`,
-    result,
-    { headers }
-  );
-}}
+    return this.http.post(
+      `${this.apiUrl}/api/results`,
+      result,
+      { headers }
+    );
+  }
 
-getMyResults() {
-  const token = localStorage.getItem('token');
+  getMyResults() {
+    const token = localStorage.getItem('token');
 
-  const headers = new HttpHeaders({
-    Authorization: `Bearer ${token}`
-  });
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
 
+    return this.http.get<any[]>(
+      `${this.apiUrl}/api/results/my-results`,
+      { headers }
+    );
+  }
+  getLeaderboard() {
   return this.http.get<any[]>(
-    `${this.apiUrl}/api/results/my-results`,
-    { headers }
+    `${this.apiUrl}/api/results/leaderboard`
   );
+}
 }
