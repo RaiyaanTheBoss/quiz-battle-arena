@@ -15,7 +15,7 @@
   <!-- LOADING -->
   <div
     class="leaderboard-card"
-    *ngIf="loading">
+    *ngIf="loading()">
 
     <div class="loading-state">
       <div class="loading-icon">⏳</div>
@@ -31,14 +31,14 @@
   <!-- ERROR -->
   <div
     class="leaderboard-card"
-    *ngIf="!loading && errorMessage">
+    *ngIf="!loading() && errorMessage()">
 
     <div class="loading-state">
       <div class="loading-icon">⚠️</div>
 
       <h2>Unable to load leaderboard</h2>
 
-      <p>{{ errorMessage }}</p>
+      <p>{{ errorMessage() }}</p>
     </div>
 
   </div>
@@ -47,7 +47,7 @@
   <!-- NO PLAYERS -->
   <div
     class="leaderboard-card"
-    *ngIf="!loading && !errorMessage && results.length === 0">
+    *ngIf="!loading() && !errorMessage() && results().length === 0">
 
     <div class="loading-state">
       <div class="loading-icon">🏆</div>
@@ -63,7 +63,7 @@
   <!-- REAL LEADERBOARD -->
   <div
     class="leaderboard-card"
-    *ngIf="!loading && !errorMessage && results.length > 0">
+    *ngIf="!loading() && !errorMessage() && results().length > 0">
 
     <div class="leaderboard-title">
 
@@ -77,7 +77,7 @@
     <!-- PLAYER ROWS -->
     <div
       class="player-row"
-      *ngFor="let player of results; let i = index">
+      *ngFor="let player of results(); let i = index">
 
       <!-- RANK -->
       <div class="rank">
