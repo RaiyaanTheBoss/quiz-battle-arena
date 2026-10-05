@@ -25,7 +25,8 @@ connectDB();
 app.use(cors({
   origin: [
   'http://localhost:4200',
-  'https://quiz-battle-arena-dacd6f46h-raiyaan.vercel.app'
+  'https://quiz-battle-arena-dacd6f46h-raiyaan.vercel.app',
+  'https://quiz-battle-arena-e95n9wgpt-raiyaan.vercel.app'
 ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
