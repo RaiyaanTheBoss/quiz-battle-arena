@@ -1,11 +1,12 @@
 import { ChangeDetectorRef, Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../services/api.services';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-leaderboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './leaderboard.html',
   styleUrl: './leaderboard.css'
 })

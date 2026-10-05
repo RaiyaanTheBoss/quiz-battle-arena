@@ -1,10 +1,11 @@
 import { Component, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../services/api.services';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './quiz.html',
   styleUrl: './quiz.css'
 })
@@ -438,7 +439,7 @@ export class Quiz implements OnDestroy {
 
     clearInterval(this.timer);
 
-    this.timeLeft.set(30);
+    this.timeLeft.set(60);
 
     if (category === '💻 Programming') {
 
@@ -488,7 +489,7 @@ export class Quiz implements OnDestroy {
 
     this.resultSaved = false;
 
-    this.timeLeft.set(30);
+    this.timeLeft.set(60);
 
     this.startTimer();
   }

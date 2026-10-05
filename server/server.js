@@ -48,7 +48,7 @@ app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.json({
-    message: 'Quiz Battle Arena backend is running!'
+    message: 'Quiz Battle backend is running!'
   });
 });
 

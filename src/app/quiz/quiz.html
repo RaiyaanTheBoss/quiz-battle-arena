@@ -4,7 +4,7 @@
 
   <header class="quiz-header">
 
-    <h1>⚔️ Quiz Battle Arena</h1>
+    <h1>⚔️ Quiz Battle</h1>
 
     <p>
       Test your knowledge. Beat your opponent!
@@ -305,31 +305,15 @@
         {{ (score / questions.length * 100).toFixed(0) }}%
 
       </p>
+    
+      <a routerLink="/leaderboard"
+      class="view-leaderboard">
+      View Leaderboard  
+    </a>
 
-
-      <!-- PLAY AGAIN -->
-
-      <button
-        type="button"
-        class="play-again"
-        (click)="restartQuiz()"
-      >
-        🔄 Play Again
-      </button>
-
-
-      <!-- CHANGE CATEGORY -->
-
-      <button
-        type="button"
-        class="change-category"
-        (click)="changeCategory()"
-      >
-        🎯 Choose Another Category
-      </button>
-
+      
     </div>
-
+     
   </section>
 
 </div>

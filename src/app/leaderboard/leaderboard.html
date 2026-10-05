@@ -7,7 +7,7 @@
     <h1>Leaderboard</h1>
 
     <p>
-      See who's dominating the Quiz Battle Arena.
+      See who's dominating the Quiz Battle.
     </p>
   </div>
 
@@ -65,6 +65,7 @@
     class="leaderboard-card"
     *ngIf="!loading() && !errorMessage() && results().length > 0">
 
+    <!-- TITLE -->
     <div class="leaderboard-title">
 
       <h2>Top Players</h2>
@@ -128,6 +129,20 @@
         </span>
 
       </div>
+
+    </div>
+
+
+    <!-- VIEW HISTORY -->
+    <div class="leaderboard-navigation">
+
+      <a
+        routerLink="/history"
+        class="view-history">
+
+        📜 View History
+
+      </a>
 
     </div>
 

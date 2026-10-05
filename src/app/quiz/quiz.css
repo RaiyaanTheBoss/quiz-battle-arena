@@ -1,7 +1,8 @@
 /* =========================================================
-   QUIZ BATTLE ARENA
+   QUIZ BATTLE 
    FULL SCREEN BATTLE UI
    ========================================================= */
+
 
 /* ==================== COMPONENT ROOT ==================== */
 
@@ -193,6 +194,7 @@
   padding: 10px 20px;
 
   border: 1px solid #334155;
+
   border-radius: 30px;
 
   background: #1e293b;
@@ -452,6 +454,7 @@
 
 .progress-bar {
   width: 100%;
+
   height: 10px;
 
   margin-bottom: 30px;
@@ -620,7 +623,9 @@
    ========================================================= */
 
 .play-again {
-  margin-top: 20px;
+  display: block;
+
+  margin: 20px auto 0;
 
   padding: 14px 30px;
 
@@ -637,7 +642,79 @@
   font-weight: 800;
 
   cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
+.play-again:hover {
+  background: #4f46e5;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+
+/* =========================================================
+   VIEW LEADERBOARD BUTTON
+   ========================================================= */
+
+/*
+   Targets the leaderboard link inside the result screen.
+   This works even if the HTML link doesn't have a special class.
+*/
+
+.result-screen a[routerLink="/leaderboard"] {
+  display: block;
+
+  width: fit-content;
+
+  margin: 12px auto 0;
+
+  padding: 13px 28px;
+
+  border: 2px solid #6366f1;
+
+  border-radius: 12px;
+
+  background: #eef2ff;
+
+  color: #4f46e5;
+
+  font-family: inherit;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.result-screen a[routerLink="/leaderboard"]:hover {
+  background: #6366f1;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+
+/* =========================================================
+   CHANGE CATEGORY BUTTON
+   ========================================================= */
 
 .change-category {
   display: block;
@@ -659,6 +736,22 @@
   font-weight: 700;
 
   cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.change-category:hover {
+  border-color: #6366f1;
+
+  background: #f8f7ff;
+
+  color: #4f46e5;
+
+  transform: translateY(-2px);
 }
 
 
@@ -810,12 +903,38 @@
     font-size: 13px;
   }
 
+
   .result-screen h2 {
     font-size: 29px;
   }
 
   .final-score strong {
     font-size: 40px;
+  }
+
+
+  /* Mobile result buttons */
+
+  .play-again {
+    width: 100%;
+
+    max-width: 280px;
+  }
+
+  .result-screen a[routerLink="/leaderboard"] {
+    width: 100%;
+
+    max-width: 280px;
+
+    box-sizing: border-box;
+  }
+
+  .change-category {
+    width: 100%;
+
+    max-width: 280px;
+
+    box-sizing: border-box;
   }
 }
 
@@ -828,6 +947,7 @@
 
   .quiz-container {
     padding-left: 10px;
+
     padding-right: 10px;
   }
 
@@ -850,4 +970,52 @@
   .question-card {
     padding: 22px 15px;
   }
+}
+
+/* PAGE NAVIGATION */
+
+.page-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  max-width: 900px;
+
+  margin: 35px auto 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.page-navigation .nav-button {
+  min-width: 130px;
+}
+
+.nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 130px;
+  padding: 12px 20px;
+  border: 1px solid #4b5563;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #4f46e5;
+  background: rgba(255, 255, 255, 0.03);
+  transition: 0.2s ease;
+}
+
+.nav-button:hover {
+  border-color: #8b5cf6;
+  color: #7c3aed;
+  transform: translateY(-2px);
+}
+
+.previous-button {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.next-button {
+  background: rgba(124, 58, 237, 0.08);
 }
